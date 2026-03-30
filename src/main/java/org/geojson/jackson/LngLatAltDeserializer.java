@@ -1,5 +1,6 @@
 package org.geojson.jackson;
 
+import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonToken;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -12,13 +13,14 @@ import java.util.List;
 
 public class LngLatAltDeserializer extends JsonDeserializer<LngLatAlt> {
 
-    @Override
-    public LngLatAlt deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException {
-        if (jp.isExpectedStartArrayToken()) {
-            return deserializeArray(jp, ctxt);
-        }
-        throw ctxt.mappingException(LngLatAlt.class);
-    }
+	@Override
+	public LngLatAlt deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException {
+		if (jp.isExpectedStartArrayToken()) {
+			return deserializeArray(jp, ctxt);
+		}
+		throw (JacksonException) ctxt.reportInputMismatch(LngLatAlt.class, "Cannot deserialize value to %s",
+				LngLatAlt.class.getSimpleName());
+	}
 
     protected LngLatAlt deserializeArray(JsonParser jp, DeserializationContext ctxt) throws IOException {
         LngLatAlt node = new LngLatAlt();
@@ -40,30 +42,32 @@ public class LngLatAltDeserializer extends JsonDeserializer<LngLatAlt> {
         return node;
     }
 
-    private double extractDouble(JsonParser jp, DeserializationContext ctxt, boolean optional) throws IOException {
-        JsonToken token = jp.nextToken();
-        if (token == null) {
-            if (optional)
-                return Double.NaN;
-            else
-                throw ctxt.mappingException("Unexpected end-of-input when binding data into LngLatAlt");
-        } else {
-            switch (token) {
-                case END_ARRAY:
-                    if (optional)
-                        return Double.NaN;
-                    else
-                        throw ctxt.mappingException("Unexpected end-of-input when binding data into LngLatAlt");
-                case VALUE_NUMBER_FLOAT:
-                    return jp.getDoubleValue();
-                case VALUE_NUMBER_INT:
-                    return jp.getLongValue();
-                case VALUE_STRING:
-                    return jp.getValueAsDouble();
-                default:
-                    throw ctxt.mappingException(
-                            "Unexpected token (" + token.name() + ") when binding data into LngLatAlt");
-            }
-        }
-    }
+	private double extractDouble(JsonParser jp, DeserializationContext ctxt, boolean optional) throws IOException {
+		JsonToken token = jp.nextToken();
+		if (token == null) {
+			if (optional)
+				return Double.NaN;
+			else
+				throw (JacksonException) ctxt.reportInputMismatch(LngLatAlt.class,
+						"Unexpected end-of-input when binding data into LngLatAlt");
+		} else {
+			switch (token) {
+			case END_ARRAY:
+				if (optional)
+					return Double.NaN;
+				else
+					throw (JacksonException) ctxt.reportInputMismatch(LngLatAlt.class,
+							"Unexpected end-of-input when binding data into LngLatAlt");
+			case VALUE_NUMBER_FLOAT:
+				return jp.getDoubleValue();
+			case VALUE_NUMBER_INT:
+				return jp.getLongValue();
+			case VALUE_STRING:
+				return jp.getValueAsDouble();
+			default:
+				throw (JacksonException) ctxt.reportInputMismatch(LngLatAlt.class,
+						"Unexpected token (" + token.name() + ") when binding data into LngLatAlt");
+			}
+		}
+	}
 }
