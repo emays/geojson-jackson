@@ -6,7 +6,7 @@ Primary changes:
 
 * Implement modules (JPMS)
 * Java 25
-* Note: group-id is io.github.emays
+* Note: groupId is io.github.emays
 
 Available at [Maven Central](https://central.sonatype.com/artifact/io.github.emays/geojson-jackson)
 
