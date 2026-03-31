@@ -10,9 +10,9 @@
 	</parent>
 
 	<artifactId>geojson-jackson</artifactId>
-	<version>1.15-SNAPSHOT</version>
+	<version>1.15.0-SNAPSHOT</version>
 
-	<name>GeoJson POJOs for Jackson </name>
+	<name>GeoJson POJOs for Jackson</name>
 	<description>A collection of Java POJOs for GeoJson</description>
 	<url>https://github.com/emays/geojson-jackson</url>
 	<licenses>
@@ -33,9 +33,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:https://github.com/emays/geojson-jackson</connection>
+		<connection>scm:git:https://www.github.com/emays/geojson-jackson</connection>
 		<developerConnection>
-			scm:git:https://github.com/emays/geojson-jackson</developerConnection>
+			scm:git:https://www.github.com/emays/geojson-jackson</developerConnection>
 		<url>https://www.github.com/emays/geojson-jackson</url>
 		<tag>HEAD</tag>
 	</scm>
