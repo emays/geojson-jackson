@@ -1,3 +1,15 @@
+[![Build](https://github.com/emays/geojson-jackson/actions/workflows/maven.yml/badge.svg)](https://github.com/emays/geojson-jackson/actions/workflows/maven.yml)
+
+This is a fork of [GeoJson Jackson](https://github.com/opendatalab-de/geojson-jackson)
+
+Primary changes:
+
+* Implement modules (JPMS)
+* Java 25
+* Note: group-id is io.github.emays
+
+Available at [Maven Central](https://central.sonatype.com/artifact/io.github.emays/geojson-jackson)
+
 GeoJson POJOs for Jackson
 =========================
 
@@ -43,17 +55,3 @@ featureCollection.add(new Feature());
 
 String json= new ObjectMapper().writeValueAsString(featureCollection);
 ```
-
-Maven Central
--------------
-
-You can find the library in the Maven Central Repository.
-
-```xml
-<dependency>
- <groupId>de.grundid.opendatalab</groupId>
- <artifactId>geojson-jackson</artifactId>
- <version>1.14</version>
-</dependency>
-```
-		
