@@ -11,11 +11,10 @@
 
 	<artifactId>geojson-jackson</artifactId>
 	<version>1.15-SNAPSHOT</version>
-	<packaging>jar</packaging>
 
 	<name>GeoJson POJOs for Jackson </name>
 	<description>A collection of Java POJOs for GeoJson</description>
-	<url>https://github.com/opendatalab-de/geojson-jackson</url>
+	<url>https://github.com/emays/geojson-jackson</url>
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
@@ -34,13 +33,30 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:git://github.com/opendatalab-de/geojson-jackson.git</connection>
+		<connection>scm:git:https://github.com/emays/geojson-jackson</connection>
 		<developerConnection>
-			scm:git:ssh://git@github.com:/opendatalab-de/geojson-jackson.git</developerConnection>
+			scm:git:https://github.com/emays/geojson-jackson</developerConnection>
+		<url>https://www.github.com/emays/geojson-jackson</url>
 		<tag>HEAD</tag>
 	</scm>
 
+	<properties>
+		<junit4.version>4.13.2</junit4.version>
+	</properties>
+
 	<dependencies>
+		<!-- test dependencies -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit4.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- other deoendencies -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
@@ -48,22 +64,6 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>1.10.19</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>
